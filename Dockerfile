@@ -3,17 +3,13 @@ FROM maven:3.9.9-amazoncorretto-17-alpine AS build
 
 WORKDIR /app
 
+# 종속성 다운로드
 COPY /app/pom.xml .
+RUN mvn dependency:go-offline -B
 
-COPY /app/mvnw .
-
+# 소스 복사 및 빌드
 COPY /app/src ./src
-
-COPY /app/.mvn ./.mvn
-
-RUN chmod 755 ./mvnw
-
-RUN ./mvnw clean package -DskipTests
+RUN mvn package -DskipTests
 
 # 실행 스테이지
 FROM amazoncorretto:17-alpine
