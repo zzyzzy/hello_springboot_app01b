@@ -11,7 +11,7 @@ COPY /app/src ./src
 
 COPY /app/.mvn ./.mvn
 
-RUN mvnw clean package -DskipTests
+RUN ./mvnw clean package -DskipTests
 
 # 실행 스테이지
 FROM amazoncorretto:17-alpine
