@@ -5,9 +5,13 @@ WORKDIR /app
 
 COPY /app/pom.xml .
 
+COPY /app/mvnw .
+
 COPY /app/src ./src
 
-RUN mvn clean package -DskipTests
+COPY /app/.mvn ./.mvn
+
+RUN mvnw clean package -DskipTests
 
 # 실행 스테이지
 FROM amazoncorretto:17-alpine
