@@ -11,6 +11,8 @@ COPY /app/src ./src
 
 COPY /app/.mvn ./.mvn
 
+RUN chmod 755 ./mvnw
+
 RUN ./mvnw clean package -DskipTests
 
 # 실행 스테이지
