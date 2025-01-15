@@ -1,0 +1,11 @@
+version: "3.9"
+
+services:
+  spring-boot-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: siestageek/springboot_app01b
+    ports:
+      - "8082:8080"
+    container_name: springboot_app01b
